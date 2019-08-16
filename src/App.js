@@ -12,6 +12,7 @@ state = {
 }
 switchNameHandler = () => {
   //console.log('Was clicked!');
+  // for test
   this.setState({
     persons:[
       { name: 'Maximilian', age:28 },
