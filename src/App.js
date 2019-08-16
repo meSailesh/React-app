@@ -14,8 +14,7 @@ const [otherState, setOtherState] = useState('some other value')
 console.log(personsState, otherState);
 
 const switchNameHandler = () => {
-  //console.log('Was clicked!');
-  // for test
+  
   setPersons({
     persons:[
       { name: 'Maximilian', age:28 },
