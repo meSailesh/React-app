@@ -66,7 +66,7 @@ const deletePersonHandler = (personIndex) => {
     showPersons : personsState.showPersons
   });
 }
-
+let btnClass = '';
 
 let classes = [];
 if(personsState.persons.length <=2) {
@@ -76,16 +76,8 @@ if(personsState.persons.length <=1) {
   classes.push(styles.bold); // classes = ['red', 'bold']
 }
 
-const style = {
-  backgroundColor: 'green',
-  color: 'white',
-  font: 'inherit',
-  border: '1px solid blue',
-  padding: '8px',
-  cursor: 'pointer',
-  
 
-};
+
 
   let persons = null;
   if(personsState.showPersons) {
@@ -105,20 +97,15 @@ const style = {
         })}
       </div>
     );
-    style.backgroundColor = 'red';
-    style[':hover'] = {
-      backgroundColor : 'salmon',
-      color:'black'
-
-    }
-
+    btnClass = styles.Red;
+   
   }
   return (
     <div className={styles.App}>
      <h1>Hi, I'am a React App</h1>
      <p className = {classes.join(' ')}>This is really working!</p>
      <button
-     style = {style}
+     className = {btnClass}
      onClick = {togglePersonHandler}>Toggle Names</button>
      {persons}
     </div>
