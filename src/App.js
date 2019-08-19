@@ -26,6 +26,17 @@ const switchNameHandler = () => {
   });
 }
 
+const nameChangedHandler = (event) => {
+  setPersons ({
+    persons:[
+      { name: 'Maximilian', age:28 },
+      { name: event.target.value, age:28 },
+      { name: 'Sailesh', age:23 }
+    ],
+    showPersons : personsState.showPersons
+  })
+}
+
 const togglePersonHandler = () => {
   const doesShow = personsState.showPersons;
   setPersons({
@@ -39,6 +50,17 @@ const togglePersonHandler = () => {
 
 }
 
+const deletePersonHandler = (personIndex) => {
+  const persons = personsState.persons;
+  persons.splice(personIndex, 1);
+  setPersons ({
+    persons: persons,
+    showPersons : personsState.showPersons
+  });
+}
+
+
+
 const style = {
   backgroundColor: 'white',
   font: 'inherit',
@@ -51,11 +73,14 @@ const style = {
   if(personsState.showPersons) {
     persons = (
       <div>
-        {personsState.persons.map(person => {
+        {personsState.persons.map((person, index) => {
           return <Person 
+          clicked = {() => {
+            deletePersonHandler(index)
+          }}
           name = {person.name}
           age = {person.age}/>
-        })};
+        })}
       </div>
     );
 
