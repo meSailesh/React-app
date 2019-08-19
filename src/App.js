@@ -67,6 +67,13 @@ const deletePersonHandler = (personIndex) => {
 }
 
 
+let classes = [];
+if(personsState.persons.length <=2) {
+  classes.push('red'); //classes = ['red']
+}
+if(personsState.persons.length <=1) {
+  classes.push('bold'); // classes = ['red', 'bold']
+}
 
 const style = {
   backgroundColor: 'green',
@@ -101,7 +108,7 @@ const style = {
   return (
     <div className="App">
      <h1>Hi, I'am a React App</h1>
-     <p>This is really working!</p>
+     <p className = {classes.join(' ')}>This is really working!</p>
      <button
      style = {style}
      onClick = {togglePersonHandler}>Toggle Names</button>
