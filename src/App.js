@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import { whileStatement } from '@babel/types';
+import {StyleRoot} from 'radium';
 
 const App = props => {
 const [personsState, setPersons] = useState({
@@ -81,7 +81,11 @@ const style = {
   font: 'inherit',
   border: '1px solid blue',
   padding: '8px',
-  cursor: 'pointer'
+  cursor: 'pointer',
+  ':hover': {
+    backgroundColor: 'lightgreen',
+  }
+
 };
 
   let persons = null;
@@ -103,16 +107,23 @@ const style = {
       </div>
     );
     style.backgroundColor = 'red';
+    style[':hover'] = {
+      backgroundColor : 'salmon',
+      color:'black'
+
+    }
 
   }
   return (
     <div className="App">
+      <StyleRoot>
      <h1>Hi, I'am a React App</h1>
      <p className = {classes.join(' ')}>This is really working!</p>
      <button
      style = {style}
      onClick = {togglePersonHandler}>Toggle Names</button>
      {persons}
+     </StyleRoot>
     </div>
   );
 }
