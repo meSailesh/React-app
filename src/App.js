@@ -51,7 +51,7 @@ const togglePersonHandler = () => {
 }
 
 const deletePersonHandler = (personIndex) => {
-  const persons = personsState.persons;
+  const persons = [...personsState.persons];
   persons.splice(personIndex, 1);
   setPersons ({
     persons: persons,
