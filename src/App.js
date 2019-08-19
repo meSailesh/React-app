@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './App.css';
+import styles from  './App.module.css';
 import Person from './Person/Person';
-import {StyleRoot} from 'radium';
+
+
 
 const App = props => {
 const [personsState, setPersons] = useState({
@@ -69,10 +70,10 @@ const deletePersonHandler = (personIndex) => {
 
 let classes = [];
 if(personsState.persons.length <=2) {
-  classes.push('red'); //classes = ['red']
+  classes.push(styles.red); //classes = ['red']
 }
 if(personsState.persons.length <=1) {
-  classes.push('bold'); // classes = ['red', 'bold']
+  classes.push(styles.bold); // classes = ['red', 'bold']
 }
 
 const style = {
@@ -82,9 +83,7 @@ const style = {
   border: '1px solid blue',
   padding: '8px',
   cursor: 'pointer',
-  ':hover': {
-    backgroundColor: 'lightgreen',
-  }
+  
 
 };
 
@@ -115,15 +114,13 @@ const style = {
 
   }
   return (
-    <div className="App">
-      <StyleRoot>
+    <div className={styles.App}>
      <h1>Hi, I'am a React App</h1>
      <p className = {classes.join(' ')}>This is really working!</p>
      <button
      style = {style}
      onClick = {togglePersonHandler}>Toggle Names</button>
      {persons}
-     </StyleRoot>
     </div>
   );
 }
