@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './App.css';
+import styles from  './App.module.css';
 import Person from './Person/Person';
-import { whileStatement } from '@babel/types';
+
+
 
 const App = props => {
 const [personsState, setPersons] = useState({
@@ -65,17 +66,18 @@ const deletePersonHandler = (personIndex) => {
     showPersons : personsState.showPersons
   });
 }
+let btnClass = '';
+
+let classes = [];
+if(personsState.persons.length <=2) {
+  classes.push(styles.red); //classes = ['red']
+}
+if(personsState.persons.length <=1) {
+  classes.push(styles.bold); // classes = ['red', 'bold']
+}
 
 
 
-const style = {
-  backgroundColor: 'green',
-  color: 'white',
-  font: 'inherit',
-  border: '1px solid blue',
-  padding: '8px',
-  cursor: 'pointer'
-};
 
   let persons = null;
   if(personsState.showPersons) {
@@ -95,15 +97,15 @@ const style = {
         })}
       </div>
     );
-    style.backgroundColor = 'red';
-
+    btnClass = styles.Red;
+   
   }
   return (
-    <div className="App">
+    <div className={styles.App}>
      <h1>Hi, I'am a React App</h1>
-     <p>This is really working!</p>
+     <p className = {classes.join(' ')}>This is really working!</p>
      <button
-     style = {style}
+     className = {btnClass}
      onClick = {togglePersonHandler}>Toggle Names</button>
      {persons}
     </div>
