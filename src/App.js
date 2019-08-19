@@ -24,11 +24,21 @@ const switchNameHandler = () => {
   });
 }
 
+const style = {
+  backgroundColor: 'white',
+  font: 'inherit',
+  border: '1px solid blue',
+  padding: '8px',
+  cursor: 'pointer'
+};
+
   return (
     <div className="App">
      <h1>Hi, I'am a React App</h1>
      <p>This is really working!</p>
-     <button onClick = {switchNameHandler}>Switch Name</button>
+     <button
+     style = {style}
+     onClick = {switchNameHandler}>Switch Name</button>
      <Person name = {personsState.persons[0].name} age = {personsState.persons[0].age}/>
      <Person name = {personsState.persons[1].name} age = {personsState.persons[1].age}>
        My Hobbies: Racing
