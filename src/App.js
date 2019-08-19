@@ -47,16 +47,10 @@ const style = {
   cursor: 'pointer'
 };
 
-  return (
-    <div className="App">
-     <h1>Hi, I'am a React App</h1>
-     <p>This is really working!</p>
-     <button
-     style = {style}
-     onClick = {togglePersonHandler}>Show Names</button>
-     {
-       personsState.showPersons ? 
-        <div>
+  let persons = null;
+  if(personsState.showPersons) {
+    persons = (
+      <div>
           <Person 
           name = {personsState.persons[0].name} 
           age = {personsState.persons[0].age}/>
@@ -69,8 +63,18 @@ const style = {
           <Person 
           name = {personsState.persons[2].name} 
           age = {personsState.persons[2].age}/>
-        </div> : null
-     }
+        </div>
+    );
+
+  }
+  return (
+    <div className="App">
+     <h1>Hi, I'am a React App</h1>
+     <p>This is really working!</p>
+     <button
+     style = {style}
+     onClick = {togglePersonHandler}>Toggle Names</button>
+     {persons}
     </div>
   );
 }
