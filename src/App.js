@@ -26,13 +26,19 @@ const switchNameHandler = () => {
   });
 }
 
-const nameChangedHandler = (event) => {
+const nameChangedHandler = (event, id) => {
+  const personIndex = personsState.persons.findIndex((p) => {
+    return p.id === id;
+  });
+  const person = {
+    ...personsState.persons[personIndex]
+  };
+  person.name = event.target.value;
+  const persons = [...personsState.persons];
+  persons[personIndex] = person;
+
   setPersons ({
-    persons:[
-      { name: 'Maximilian', age:28 },
-      { name: event.target.value, age:28 },
-      { name: 'Sailesh', age:23 }
-    ],
+  persons: persons,
     showPersons : personsState.showPersons
   })
 }
@@ -80,7 +86,10 @@ const style = {
           }}
           name = {person.name}
           age = {person.age}
-          key = {person.id}/>
+          key = {person.id}
+          changed = {(event) => {
+            nameChangedHandler(event, person.id)
+          }}/>
         })}
       </div>
     );
