@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import { whileStatement } from '@babel/types';
 
 const App = props => {
 const [personsState, setPersons] = useState({
@@ -68,7 +69,8 @@ const deletePersonHandler = (personIndex) => {
 
 
 const style = {
-  backgroundColor: 'white',
+  backgroundColor: 'green',
+  color: 'white',
   font: 'inherit',
   border: '1px solid blue',
   padding: '8px',
@@ -93,6 +95,7 @@ const style = {
         })}
       </div>
     );
+    style.backgroundColor = 'red';
 
   }
   return (
