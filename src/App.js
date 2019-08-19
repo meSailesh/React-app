@@ -41,9 +41,9 @@ const togglePersonHandler = () => {
   const doesShow = personsState.showPersons;
   setPersons({
     persons:[
-      { name: 'Max', age:28 },
-      { name: 'Manu', age:28 },
-      { name: 'Sailesh', age:23 }
+      { id : 'sadsa', name: 'Max', age:28 },
+      { id : 'dfdf', name: 'Manu', age:28 },
+      { id : 'fgfg', name: 'Sailesh', age:23 }
   ], 
     showPersons: !doesShow
   })
@@ -79,7 +79,8 @@ const style = {
             deletePersonHandler(index)
           }}
           name = {person.name}
-          age = {person.age}/>
+          age = {person.age}
+          key = {person.id}/>
         })}
       </div>
     );
